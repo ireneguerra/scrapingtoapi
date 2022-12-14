@@ -20,32 +20,28 @@ public class WebService {
     private static String getLocation(Request request, Response response){
         response.header("content-type", "application/json");
         String name = request.params("name");
-        Hotel hotel = Scrapper.getWebUrl(name);
-        Location location = hotel.getLocation();
-        return toJson(location);
+        Hotel hotel = BookingScrapper.scrapHotel(name);
+        return toJson(hotel);
     }
 
     private static String getServices(Request request, Response response){
         response.header("content-type", "application/json");
         String name = request.params("name");
-        Hotel hotel = Scrapper.getWebUrl(name);
-        List<String> services = hotel.getServices();
+        HashMap<String, List<String>> services = BookingScrapper.scrapServices(name);
         return toJson(services);
     }
 
     private static String getComments(Request request, Response response){
         response.header("content-type", "application/json");
         String name = request.params("name");
-        Hotel hotel = Scrapper.getWebUrl(name);
-        List<Review> comments = hotel.getReviews();
+        List<Review> comments = BookingScrapper.scrapComments(name);
         return toJson(comments);
     }
 
     private static String getRatings(Request request, Response response){
         response.header("content-type", "application/json");
         String name = request.params("name");
-        Hotel hotel = Scrapper.getWebUrl(name);
-        HashMap<String, Double> ratings = hotel.getRating();
+        HashMap<String, Double> ratings = BookingScrapper.scrapRatings(name);
         return toJson(ratings);
     }
     private static String toJson(Object o) {
