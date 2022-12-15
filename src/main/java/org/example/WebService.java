@@ -2,19 +2,16 @@ package org.example;
 import com.google.gson.Gson;
 import spark.Request;
 import spark.Response;
-
 import java.util.HashMap;
 import java.util.List;
-
 import static spark.Spark.get;
-import static spark.Spark.halt;
 
 public class WebService {
     public static void gets(){
-        get("/hotels/:name", (request, response) -> getLocation(request, response));
-        get("/hotels/:name/services", (request, response) -> getServices(request, response));
-        get("/hotels/:name/comments", (request, response) -> getComments(request, response));
-        get("/hotels/:name/ratings", (request, response) -> getRatings(request, response));
+        get("/hotels/:name", WebService::getLocation);
+        get("/hotels/:name/services", WebService::getServices);
+        get("/hotels/:name/comments", WebService::getComments);
+        get("/hotels/:name/ratings", WebService::getRatings);
     }
 
     private static String getLocation(Request request, Response response){

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static spark.Spark.halt;
+
 public class BookingScrapper{
     public static Document getHTML(String url){
         Document html = null;
@@ -16,6 +18,8 @@ public class BookingScrapper{
             html = Jsoup.connect(url).get();
         }catch (Exception e){
             System.out.println("Error al obtener el código HTML");
+            halt(500, "No se ha encontrado información, puede que este hotel no esté disponible. " +
+                    "Pruebe con otro nombre.");
         }
         return html;
     }
@@ -24,8 +28,7 @@ public class BookingScrapper{
         String url = "https://www.google.com/search?q=booking+" + name;
         System.out.println(url);
         Elements urls = getHTML(url).select("div.Z26q7c.UK95Uc.jGGQ5e.VGXe8");
-        String webUrl = urls.select("a").attr("href");
-        return webUrl;
+        return urls.select("a").attr("href");
     }
 
     public static String getTelephone(String name){
