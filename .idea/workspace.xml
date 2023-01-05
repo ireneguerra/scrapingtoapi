@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="310f8563-2482-4514-966c-47dff2f8fc44" name="Changes" comment="v1.1">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/model/HotelScrapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BookingScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BookingScrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BookingScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/BookingScrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/WebService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +54,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "corretto-11",
-    "last_opened_file_path": "C:/Users/irene/Desktop/Universidad/carrousel/carrousel"
+    "last_opened_file_path": "C:/Users/irene/IdeaProjects/scrapingtoapi"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -79,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671048202153</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="v1.1">
+      <created>1671110231190</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671110231190</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

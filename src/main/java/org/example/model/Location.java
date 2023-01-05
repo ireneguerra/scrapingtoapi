@@ -1,4 +1,4 @@
-package org.example;
+package org.example.model;
 
 public class Location {
     private final String address;
@@ -11,9 +11,5 @@ public class Location {
 
     public String getAddress() {
         return address;
-    }
-
-    public String getCoordinates() {
-        return coordinates;
     }
 }
