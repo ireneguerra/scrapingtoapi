@@ -8,8 +8,4 @@ public class Location {
         this.address = address;
         this.coordinates = coordinates;
     }
-
-    public String getAddress() {
-        return address;
-    }
 }

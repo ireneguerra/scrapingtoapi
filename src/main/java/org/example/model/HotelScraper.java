@@ -3,7 +3,7 @@ package org.example.model;
 import java.util.HashMap;
 import java.util.List;
 
-public interface HotelScrapper {
+public interface HotelScraper {
     Hotel scrapHotel(String name);
     HashMap<String, List<String>> scrapServices(String name);
     List<Review> scrapComments(String name);

@@ -1,27 +1,34 @@
 package org.example.controller;
 
-import org.example.model.BookingScrapper;
+import org.example.model.BookingScraper;
 import org.example.model.Hotel;
+import org.example.model.HotelScraper;
 import org.example.model.Review;
-import org.example.view.WebService;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class Controller {
+public class Controller implements HotelScraper {
     public void control(){
-        new WebService().start();
+        new WebService(new Controller()).start();
     }
-    public Hotel getLocation(String name){
-        return new BookingScrapper().scrapHotel(name);
+    @Override
+    public Hotel scrapHotel(String name) {
+        return new BookingScraper().scrapHotel(name);
     }
-    public HashMap<String, List<String>> getServices(String name){
-        return new BookingScrapper().scrapServices(name);
+
+    @Override
+    public HashMap<String, List<String>> scrapServices(String name) {
+        return new BookingScraper().scrapServices(name);
     }
-    public List<Review> getReviews(String name){
-        return new BookingScrapper().scrapComments(name);
+
+    @Override
+    public List<Review> scrapComments(String name) {
+        return new BookingScraper().scrapComments(name);
     }
-    public HashMap<String, Double> getRatings(String name){
-        return new BookingScrapper().scrapRatings(name);
+
+    @Override
+    public HashMap<String, Double> scrapRatings(String name) {
+        return new BookingScraper().scrapRatings(name);
     }
 }

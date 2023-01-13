@@ -1,4 +1,5 @@
 package org.example.model;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -7,14 +8,15 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import static spark.Spark.halt;
 
-public class BookingScrapper implements HotelScrapper{
-    private Document getHTML(String url){
+public class BookingScraper implements HotelScraper {
+    private Document getHTML(String url) {
         Document html = null;
-        try{
+        try {
             html = Jsoup.connect(url).get();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error al obtener el código HTML");
             halt(500, "No se ha encontrado información, puede que este hotel no esté disponible. " +
                     "Pruebe con otro nombre.");
@@ -22,14 +24,13 @@ public class BookingScrapper implements HotelScrapper{
         return html;
     }
 
-    private String getWebUrl(String name){
+    private String getWebUrl(String name) {
         String url = "https://www.google.com/search?q=booking+" + name;
-        System.out.println(url);
         Elements urls = getHTML(url).select("div.Z26q7c.UK95Uc.jGGQ5e.VGXe8");
         return urls.select("a").attr("href");
     }
 
-    private String getTelephone(String name){
+    private String getTelephone(String name) {
         String url = "https://www.google.com/search?q=kayak+" + name;
         Elements urls = getHTML(url).select("div.Z26q7c.UK95Uc.jGGQ5e.VGXe8");
         String webUrl = urls.select("a").attr("href");
@@ -37,7 +38,7 @@ public class BookingScrapper implements HotelScrapper{
         return numbers.select("span").attr("class", "r9uX-phone").text();
     }
 
-    public Hotel scrapHotel(String name){
+    public Hotel scrapHotel(String name) {
         String url = getWebUrl(name);
         Elements locations = getHTML(url).select("span.hp_address_subtitle.js-hp_address_subtitle.jq_tooltip");
         String address = locations.select("span").attr("title aria-describedby", "tooltip-1").text();
@@ -46,7 +47,8 @@ public class BookingScrapper implements HotelScrapper{
         String telephone = getTelephone(name);
         return new Hotel(telephone, new Location(address, coordinate));
     }
-    public HashMap<String, List<String>> scrapServices(String name){
+
+    public HashMap<String, List<String>> scrapServices(String name) {
         String url = getWebUrl(name);
         HashMap<String, List<String>> servicesMap = new HashMap<>();
         Elements categories = getHTML(url).select("div.hotel-facilities-group");
@@ -64,9 +66,10 @@ public class BookingScrapper implements HotelScrapper{
         }
         return servicesMap;
     }
-    public List<Review> scrapComments(String name){
+
+    public List<Review> scrapComments(String name) {
         List<Review> reviews = new ArrayList<>();
-        String urlReview =  "https://www.google.com/search?q=booking+reviews+" + name;
+        String urlReview = "https://www.google.com/search?q=booking+reviews+" + name;
         Elements urlReviews = getHTML(urlReview).select("div.Z26q7c.UK95Uc.jGGQ5e");
         String url = urlReviews.select("a").attr("href");
         Elements comments = getHTML(url).select("div.review_item_review");
@@ -82,9 +85,10 @@ public class BookingScrapper implements HotelScrapper{
         }
         return reviews;
     }
-    public HashMap<String, Double> scrapRatings(String name){
+
+    public HashMap<String, Double> scrapRatings(String name) {
         String url = getWebUrl(name);
-        HashMap<String, Double> ratingsMap =  new HashMap<>();
+        HashMap<String, Double> ratingsMap = new HashMap<>();
         Elements marks = getHTML(url).select("div.a1b3f50dcd.b2fe1a41c3.a1f3ecff04.e187349485.d19ba76520");
         for (Element mark : marks) {
             Elements category = mark.select("div.b1e6dd8416.aacd9d0b0a");
